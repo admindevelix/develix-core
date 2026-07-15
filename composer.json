@@ -1,7 +1,7 @@
 {
     "name": "admindevelix/develix-core",
     "description": "Develix Core Framework",
-    "type": "project",
+    "type": "library",
     "authors": [
         {
             "name": "Diego Eveling",
@@ -10,8 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Core\\": "core/"
+            "Core\\": "src/Core/",
+            "Config\\": "src/Config/"
         }
     },
     "require": {}
