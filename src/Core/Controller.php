@@ -8,27 +8,37 @@ class Controller
     {
         extract($data);
 
-        $viewPath = dirname(__DIR__) . "/app/Views/{$view}.php";
+        $basePath = defined('BASE_PATH')
+            ? BASE_PATH
+            : dirname(__DIR__, 3);
+
+        $viewPath = $basePath . "/app/Views/{$view}.php";
 
         if (!file_exists($viewPath)) {
             throw new \RuntimeException("View não encontrada: {$view}");
         }
 
-        require dirname(__DIR__) . "/app/Layouts/header.php";
-        require dirname(__DIR__) . "/app/Layouts/sidebar.php";
-        require dirname(__DIR__) . "/app/Layouts/topbar.php";
+        require $basePath . "/app/Layouts/header.php";
+        require $basePath . "/app/Layouts/sidebar.php";
+        require $basePath . "/app/Layouts/topbar.php";
         require $viewPath;
-        require dirname(__DIR__) . "/app/Layouts/footer.php";
+        require $basePath . "/app/Layouts/footer.php";
     }
 
     protected function component(string $component, array $data = []): void
     {
         extract($data);
 
-        $componentPath = dirname(__DIR__) . "/app/Components/{$component}.php";
+        $basePath = defined('BASE_PATH')
+            ? BASE_PATH
+            : dirname(__DIR__, 3);
+
+        $componentPath = $basePath . "/app/Components/{$component}.php";
 
         if (!file_exists($componentPath)) {
-            throw new \RuntimeException("Componente não encontrado: {$component}");
+            throw new \RuntimeException(
+                "Componente não encontrado: {$component}"
+            );
         }
 
         require $componentPath;
