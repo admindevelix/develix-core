@@ -15,6 +15,7 @@
             "Core\\Session\\": "src/Session/",
             "Core\\Auth\\": "src/Auth/",
             "Core\\Validation\\": "src/Validation/",
+            "Core\\Storage\\": "src/Storage/",
             "Config\\": "src/Config/",
             "Core\\View\\": "src/View/"
         }
