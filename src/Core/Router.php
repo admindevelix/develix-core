@@ -16,9 +16,11 @@ class Router
         $this->routes['POST'][$this->normalize($uri)] = $action;
     }
 
-    public function dispatch(string $uri, string $method): void
+    public function dispatch(): void
     {
-        $uri = $this->normalize($uri);
+        $uri = \Core\Http\Request::uri();
+
+        $method = \Core\Http\Request::method();
 
         if (!isset($this->routes[$method][$uri])) {
             http_response_code(404);
