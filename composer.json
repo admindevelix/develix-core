@@ -14,6 +14,7 @@
             "Core\\Http\\": "src/Http/",
             "Core\\Session\\": "src/Session/",
             "Core\\Auth\\": "src/Auth/",
+            "Core\\Validation\\": "src/Validation/",
             "Config\\": "src/Config/",
             "Core\\View\\": "src/View/"
         }
