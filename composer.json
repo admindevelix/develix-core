@@ -10,15 +10,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Core\\": "src/Core/",
-            "Core\\Http\\": "src/Http/",
-            "Core\\Session\\": "src/Session/",
-            "Core\\Auth\\": "src/Auth/",
-            "Core\\Validation\\": "src/Validation/",
-            "Core\\Storage\\": "src/Storage/",
-            "Core\\Database\\": "src/Database/",
-            "Core\\View\\": "src/View/",
-            "Core\\Console\\": "src/Console/"
+            "Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "require-dev": {
