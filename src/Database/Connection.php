@@ -1,11 +1,13 @@
 <?php
 
-namespace Config;
+namespace Core\Database;
+
+
 
 use PDO;
 use PDOException;
 
-class Database
+class Connection
 {
     private static ?PDO $connection = null;
 

@@ -16,9 +16,12 @@
             "Core\\Auth\\": "src/Auth/",
             "Core\\Validation\\": "src/Validation/",
             "Core\\Storage\\": "src/Storage/",
-            "Config\\": "src/Config/",
-            "Core\\View\\": "src/View/"
+            "Core\\Database\\": "src/Database/",
+            "Core\\View\\": "src/View/",
+            "Core\\Console\\": "src/Console/"
         }
     },
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    }
 }
