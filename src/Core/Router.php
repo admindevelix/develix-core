@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Core;
 
 class Router
 {
@@ -18,7 +18,7 @@ class Router
 
     public function dispatch(): void
     {
-        $uri = \Core\Http\Request::uri();
+        $uri = $this->normalize(\Core\Http\Request::uri());
 
         $method = \Core\Http\Request::method();
 

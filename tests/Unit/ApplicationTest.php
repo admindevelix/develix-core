@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use Core\Core\Application;
 use Core\Core\Container;
 use PHPUnit\Framework\TestCase;
 use Tests\Fakes\TestServiceProvider;
 use Core\Contracts\ContainerInterface;
 use Tests\Fakes\FirstServiceProvider;
 use Tests\Fakes\SecondServiceProvider;
+
+use Core\Core\Application;
 
 final class ApplicationTest extends TestCase
 {
@@ -23,25 +24,6 @@ final class ApplicationTest extends TestCase
         self::assertSame($container, $application->getContainer());
     }
 
-    /* public function testApplicationRegistersServiceProvider(): void
-    {
-        $container = new Container();
-        $application = new Application($container);
-
-        $provider = new class ($container) extends \Core\Core\ServiceProvider {
-            public bool $registered = false;
-
-            public function register(): void
-            {
-                $this->registered = true;
-            }
-        };
-
-        $application->register($provider);
-
-        self::assertTrue($provider->registered);
-    }
- */
     public function testApplicationBootsRegisteredProviders(): void
     {
         TestServiceProvider::reset();
@@ -127,4 +109,5 @@ final class ApplicationTest extends TestCase
 
         self::assertTrue(true);
     }
+
 }
