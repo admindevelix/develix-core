@@ -1,17 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core\View;
 
-class View
+final class View
 {
+    private static ?string $basePath = null;
+
+    public static function setBasePath(string $basePath): void
+    {
+        self::$basePath = rtrim($basePath, '/\\');
+    }
+
     public static function render(
         string $view,
         array $data = [],
         ?string $layout = 'app'
     ): void {
-        $basePath = defined('BASE_PATH')
-            ? BASE_PATH
-            : dirname(__DIR__, 4);
+        $basePath = self::$basePath
+            ?? (defined('BASE_PATH')
+                ? BASE_PATH
+                : dirname(__DIR__, 2));
 
         $viewPath = $basePath . "/app/Views/{$view}.php";
 
@@ -23,6 +33,7 @@ class View
 
         if ($layout === null) {
             require $viewPath;
+
             return;
         }
 

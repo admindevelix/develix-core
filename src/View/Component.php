@@ -1,24 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core\View;
 
-class Component
+final class Component
 {
-    public static function render(string $component, array $data = []): void
+    private static ?string $basePath = null;
+
+    public static function setBasePath(string $basePath): void
     {
-        extract($data);
+        self::$basePath = rtrim($basePath, '/\\');
+    }
 
-        $basePath = defined('BASE_PATH')
-            ? BASE_PATH
-            : dirname(__DIR__, 4);
+    public static function render(
+        string $component,
+        array $data = []
+    ): void {
+        $basePath = self::$basePath
+            ?? (defined('BASE_PATH')
+                ? BASE_PATH
+                : dirname(__DIR__, 2));
 
-        $componentPath = $basePath . "/app/Components/{$component}.php";
+        $componentPath = $basePath
+            . "/app/Components/{$component}.php";
 
         if (!file_exists($componentPath)) {
             throw new \RuntimeException(
                 "Componente não encontrado: {$component}"
             );
         }
+
+        extract($data);
 
         require $componentPath;
     }
